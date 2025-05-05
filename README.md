@@ -1,40 +1,72 @@
-# Assignment 5: Grid World Navigation
-Course     : Data Structures (CSCI‑UA 102, Sec 7)
-Instructor : Max Sklar
-Author     : Anushay Anjum
+# Assignment 5: Grid World Navigation
 
-## RUNBOOK
+**Course**: Data Structures (CSCI-UA 102, Section 7)  
+**Instructor**: Max Sklar  
+**Author**: Anushay Anjum  
 
-1. Compile all sources
+---
 
-   cd src
-   javac *.java
+## Table of Contents
 
-2. Run the pre‑built test suite
+1. [Runbook](#runbook)  
+2. [Time Spent](#time-spent)  
+3. [Notes](#notes)  
+4. [Resources & Acknowledgements](#resources--acknowledgements)  
 
-   java GridWorldTest
+---
 
-3. Generate & solve random puzzles
+## Runbook
 
-   # 20 × 20 grid with 20 % blocked cells
-   java RandomPuzzleGenerator 20 20 0.2 | java GridWorld
+### 1. Compile All Sources
 
-   # Stress‑test on a tall grid (100 000 × 20, 20 % blocked)
-   java RandomPuzzleGenerator 100000 20 0.2 | java GridWorld
+```bash
+cd src
+javac *.java
+````
 
-> Successful runs print the solved grid and a **PASS** verdict for each puzzle in `GridWorldTest`.
+### 2. Run the Test Suite
 
-## TIME SPENT
+```bash
+java GridWorldTest
+```
 
-Roughly one week total (spread out while recovering from illness).
+> A **PASS** verdict will appear for each puzzle in `GridWorldTest` upon success.
 
-## NOTES
+### 3. Generate & Solve Random Puzzles
 
-* Direction‑iteration pitfalls: earlier versions stepped into blocked cells or looped. Guarding every candidate move with both bounds‐ and blockage‑checks fixed it.
-* Edge‑case testing: the 100 000 × 20 stress test confirmed the solver fits within a 4 GB heap.
-* All changes confined to `PathFinder.java`; the rest of the skeleton is unmodified.
+* **20×20 grid, 20% blocked**
 
-## RESOURCES & ACKNOWLEDGEMENTS
+  ```bash
+  java RandomPuzzleGenerator 20 20 0.2 | java GridWorld
+  ```
+* **Stress test: 100000×20 grid, 20% blocked**
 
-* Oracle Java Docs (standard‑library reference)
-* No external code copied; full implementation written and tested by the author.
+  ```bash
+  java RandomPuzzleGenerator 100000 20 0.2 | java GridWorld
+  ```
+
+---
+
+## Time Spent
+
+Roughly **one week**, spread out while recovering from illness.
+
+---
+
+## Notes
+
+* **Direction-iteration pitfalls**
+  Early attempts stepped into blocked cells or looped infinitely.
+  *Fix:* Wrap each candidate move in both boundary and blockage checks.
+* **Edge-case validation**
+  The 100000×20 stress test confirmed memory usage stays under a 4 GB heap.
+* **Scope of changes**
+  All work confined to `PathFinder.java`; other skeleton files remain untouched.
+
+---
+
+## Resources & Acknowledgements
+
+* [Oracle Java Documentation](https://docs.oracle.com/javase/8/docs/api/) — Standard-library reference
+* No external code copied; implementation authored and tested end-to-end by Anushay Anjum.
+
